@@ -1,39 +1,41 @@
 <template>
-  <div v-if="profile" id="profile">
-    <div>
-      <div>
-        <img :src="profile.picture">
+  <div class="container">
+    <div class="jumbotron mt-5">
+      <div class="col-sm-8 mx-auto">
+        <h1 class="text-center">PROFILE</h1>
       </div>
-      <div>
-        <h2>{{ profile.name }}</h2>
-        <p>{{ profile.email }}</p>
-      </div>
-    </div>
-
-    <div>
-      <pre>{{ JSON.stringify(profile, null, 2) }}</pre>
+      <table class="table col-md-6 mx-auto">
+        <tbody>
+          <tr>
+            <td>Fist Name</td>
+            <td>{{first_name}}</td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td>{{last_name}}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{email}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
+import jwtDecode from 'jwt-decode'
+
 export default {
-  data() {
+  data () {
+    const token = localStorage.usertoken
+    const decoded = jwtDecode(token)
     return {
-      profile: this.$auth.profile
-    };
-  },
-  methods: {
-    handleLoginEvent(data) {
-      this.profile = data.profile;
+      first_name: decoded.identity.first_name,
+      last_name: decoded.identity.last_name,
+      email: decoded.identity.email
     }
   }
-};
-</script>
-
-<style>
-#profile{
-  margin-top:80px;
-  margin-left:200px;
 }
-</style>
+</script>

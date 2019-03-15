@@ -14,7 +14,7 @@
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Author</th>
-              <th scope="col">Read?</th>
+              <th scope="col">Avilable</th>
               <th></th>
             </tr>
           </thead>
@@ -23,7 +23,7 @@
               <td>{{ book.title }}</td>
               <td>{{ book.author }}</td>
               <td>
-                <span v-if="book.read">Yes</span>
+                <span v-if="book.available">Yes</span>
                 <span v-else>No</span>
               </td>
               <td>
@@ -72,8 +72,8 @@
             </b-form-input>
           </b-form-group>
         <b-form-group id="form-read-group">
-          <b-form-checkbox-group v-model="addBookForm.read" id="form-checks">
-            <b-form-checkbox value="true">Read?</b-form-checkbox>
+          <b-form-checkbox-group v-model="addBookForm.available" id="form-checks">
+            <b-form-checkbox value="true">Available</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
         <b-button type="submit" variant="primary">Submit</b-button>
@@ -106,8 +106,8 @@
             </b-form-input>
         </b-form-group>
         <b-form-group id="form-read-edit-group">
-        <b-form-checkbox-group v-model="editForm.read" id="form-checks">
-            <b-form-checkbox value="true">Read?</b-form-checkbox>
+        <b-form-checkbox-group v-model="editForm.available" id="form-checks">
+            <b-form-checkbox value="true">Avilable</b-form-checkbox>
         </b-form-checkbox-group>
         </b-form-group>
         <b-button type="submit" variant="primary">Update</b-button>
@@ -129,13 +129,13 @@ export default {
       addBookForm: {
         title: "",
         author: "",
-        read: "",
+        available: "",
       },
       editForm: {
         _id: "",
         title: "",
         author: "",
-        read: "",
+        available: "",
       },
       message: "",
       showMessage: false,
@@ -215,22 +215,22 @@ export default {
     initForm() {
       this.addBookForm.title = "";
       this.addBookForm.author = "";
-      this.addBookForm.read = [];
+      this.addBookForm.available = [];
       this.editForm._id = "";
       this.editForm.title = "";
       this.editForm.author = "";
-      this.editForm.read = [];
+      this.editForm.available = [];
     },
 
     onSubmit(evt) {
       evt.preventDefault();
       this.$refs.addBookModal.hide();
-      let read = false;
-      if (this.addBookForm.read[0]) read = true;
+      let available = false;
+      if (this.addBookForm.available[0]) available = true;
       const payload = {
         title: this.addBookForm.title,
         author: this.addBookForm.author,
-        read, // property shorthand
+        available, // property shorthand
       };
       this.addBook(payload);
       this.initForm();
@@ -238,12 +238,12 @@ export default {
     onSubmitUpdate(evt) {
       evt.preventDefault();
       this.$refs.editBookModal.hide();
-      let read = false;
-      if (this.editForm.read[0]) read = true;
+      let available = false;
+      if (this.editForm.available[0]) available = true;
       const payload = {
         title: this.editForm.title,
         author: this.editForm.author,
-        read,
+        available,
       };
       this.updateBook(payload, this.editForm._id);
     },

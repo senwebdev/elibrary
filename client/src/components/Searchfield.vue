@@ -12,7 +12,7 @@
                 <tr>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
-                    <th scope="col">Read?</th>
+                    <th scope="col">Available</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,12 +20,17 @@
                     <td>{{ book.title }}</td>
                     <td>{{ book.author }}</td>
                     <td>
-                        <span v-if="book.read">Yes</span>
+                        <span v-if="book.available">Yes</span>
                         <span v-else>No</span>
                     </td>                
                 </tr>
             </tbody>
             </table>
+        </div>
+        <div>
+          <h3 v-if="any_response" class="text-center">
+            No search results!
+          </h3>
         </div>
     </div>
 </template>
@@ -36,17 +41,20 @@ export default {
   data() {
     return {
         books: [],
-        search_key:''
+        search_key:'',
+        any_response: false, 
     }
   },
 
   methods: {
     getBooks() {
+      this.any_response = false
       const path = `http://localhost:5000/search?search_key=${this.search_key}`;
       axios.get(path)
       .then((res) => {
-        this.books = res.data;
-        console.log(this.search_key)
+        this.any_response = (res.data.length > 0) ? false : true
+        console.log(res.data)
+        this.books = res.data; 
       })
       .catch((error) => {
         // eslint-disable-next-line
