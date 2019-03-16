@@ -13,9 +13,6 @@
         <input type="radio" name="options" id="option3" autocomplete="off"> <router-link to="/login">Login</router-link>
         </label>
         <label v-if="auth=='loggedin'" class="btn btn-secondary">
-        <input type="radio" name="options" id="option4" autocomplete="off"> <router-link to="/search">Search</router-link>
-        </label>
-        <label v-if="auth=='loggedin'" class="btn btn-secondary">
         <input type="radio" name="options" id="option5" autocomplete="off"> <a href="" class="nav_link" v-on:click="logout">Logout</a>
         </label>
     </div>

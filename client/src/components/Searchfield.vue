@@ -1,31 +1,10 @@
 <template>
-    <div>
-        <div class="col-md-3">
+    <div class="row">
+        <div class="">
             <form @submit.prevent="getBooks()">
                 <input v-model="search_key" type="text" placeholder="Search for book"/>
-                <button type="submit">Search</button>
+                <v-btn type="submit">Search</v-btn>
             </form>        
-        </div>
-        <div>
-            <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Title</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Available</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(book, index) in books" :key="index">
-                    <td>{{ book.title }}</td>
-                    <td>{{ book.author }}</td>
-                    <td>
-                        <span v-if="book.available">Yes</span>
-                        <span v-else>No</span>
-                    </td>                
-                </tr>
-            </tbody>
-            </table>
         </div>
         <div>
           <h3 v-if="any_response" class="text-center">
@@ -64,3 +43,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
