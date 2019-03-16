@@ -14,7 +14,7 @@ export default {
         'latestbooks': LatestBooks,
         'search': Search
     }
-};
+}; 
 </script>
 
 <style>
