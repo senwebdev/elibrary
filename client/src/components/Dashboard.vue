@@ -19,7 +19,7 @@ export default {
 
 <style>
 .search_form{
-    position:fixed;
+    position:fixed; 
     left:80%;
     width:300px;
     position: fixed;
