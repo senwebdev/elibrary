@@ -25,5 +25,5 @@ export default {
     position: fixed;
     left: 75%;
     width: 360px;
-}
+} 
 </style>
