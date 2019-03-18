@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
+    <v-layout>
         <search class="search_form"></search>
         <latestbooks></latestbooks>
-    </div>
+    </v-layout>
 </template>
 
 <script>
@@ -19,9 +19,6 @@ export default {
 
 <style>
 .search_form{
-    position:fixed; 
-    left:80%;
-    width:300px;
     position: fixed;
     left: 75%;
     width: 360px;

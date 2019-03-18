@@ -1,20 +1,37 @@
 <template>
-    <div id="nav_bar" class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-secondary active">
-        <input type="radio" name="options" id="option1" autocomplete="off" checked><router-link to="/">Home</router-link>
-        </label>
-        <label v-if="auth=='loggedin'" class="btn btn-secondary">
-        <input type="radio" name="options" id="option2" autocomplete="off"> <router-link to="/books">Books</router-link>
-        </label>
-        <label v-if="auth=='loggedin'" class="btn btn-secondary">
-        <input type="radio" name="options" id="option2" autocomplete="off"> <router-link to="/profile">Profile</router-link>
-        </label>
-        <label v-if="auth==''" class="btn btn-secondary">
-        <input type="radio" name="options" id="option3" autocomplete="off"> <router-link to="/login">Login</router-link>
-        </label>
-        <label v-if="auth=='loggedin'" class="btn btn-secondary">
-        <input type="radio" name="options" id="option5" autocomplete="off"> <a href="" class="nav_link" v-on:click="logout">Logout</a>
-        </label>
+    <div id="nav_bar">
+        <v-toolbar dark color="secondary">
+          <v-toolbar-side-icon></v-toolbar-side-icon>
+          <v-toolbar-title class="white--text">eLibrary</v-toolbar-title>
+          <v-spacer></v-spacer>
+            <router-link to="/">
+              <v-btn round icon>
+                <v-icon>home</v-icon>
+              </v-btn>
+            </router-link>
+            <router-link v-if="auth=='loggedin'" to="/books">
+              <v-btn round icon>
+                <v-icon>library_books</v-icon>
+              </v-btn>
+            </router-link>
+            <router-link v-if="auth=='loggedin'" to="/profile">
+              <v-btn round icon>
+                <v-icon>account_box</v-icon>
+              </v-btn>
+            </router-link>          
+            <router-link v-if="auth==''" to="/login">
+              <v-btn round icon>
+                <v-icon>account_circle</v-icon>
+              </v-btn>
+            </router-link>
+            
+            <a v-if="auth=='loggedin'" href="/" v-on:click="logout">
+              <v-btn round icon>
+                <v-icon>exit_to_app</v-icon>
+              </v-btn>
+            </a>            
+            
+          </v-toolbar>
     </div>
 </template>
 

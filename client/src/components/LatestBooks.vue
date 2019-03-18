@@ -1,22 +1,98 @@
 <template>
-    <div class="row">
-        <button class="btn btn-primary">Latest Books</button>
-    </div>
+
+  <v-container grid-list-md text-xs-center>
+    <v-layout row wrap>
+      <v-btn class="white--text" color="green accent-4">Latest Books</v-btn>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex v-for="(book, index) in books" :key="index" xs3>
+        <v-card dark color="primary" oncontextmenu="return false" @mouseleave="leaveFlex(index, $event)" >
+          <v-img class="image" :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
+          <!-- <transition name="fade" > -->
+            <div class="summary" v-if="isHovers[index]" >
+              {{book.title}}<br>
+              {{book.author}}<br>
+              {{book.read}}<br>
+              <v-btn v-bind:disabled="isAuthorized()">Watch Now</v-btn>
+            </div>
+          <!-- </transition> -->
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
+import axios from 'axios';
+import EventBus from './EventBus'
+
 export default {
   data () {
     return{
-
+      books: [],
+      isHovers: [],
+      auth: '',
     }
+  },
+  methods: {
+    getLatestBooks() { 
+      const path = 'http://localhost:5000/latest_books';
+      axios.get(path)
+      .then((res) => {
+        this.books = res.data;
+        for (let i = 0; i < this.books.length; i++) {
+          this.isHovers[i] = false;
+        }
+      })
+      .catch((error) => {
+        // eslint-disable-next-line
+        console.error(error);
+      });
+    },
+    showSummary: function(index, event) {
+      if(event.target.className == "v-responsive__content" || event.target.className == "v-responsive v-image image")
+        this.isHovers[index] = true;
+      this.isHovers = this.isHovers.slice();
+    },
+    leaveFlex: function(index, event){
+      if(event.target.className == "v-card v-sheet theme--dark primary")
+        this.isHovers[index] = false;
+      this.isHovers = this.isHovers.slice();
+    },
+    isAuthorized: function(){
+      var isLoggedin = localStorage.getItem('usertoken')
+      return isLoggedin ? false : true;
+    }
+  },
+  created(){
+    this.getLatestBooks();
+  },
+  mounted () {
+    this.auth = localStorage.loggedIn;
   }
 }
 
 </script>
 
 <style>
+
+.image:hover {
+ opacity: 0.5;
+}
+
 .row{
   padding:20px;
 }
+
+.summary{
+    width:300px;
+    z-index: 10;
+    margin-top: -70px;
+    margin-left: 150px;
+    position: absolute;
+    background: white;
+    color: black;
+    border-top-left-radius:10px;
+}
+
 </style>

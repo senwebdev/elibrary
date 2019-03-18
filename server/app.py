@@ -73,33 +73,6 @@ def login():
         result = jsonify({"result":"No results found"})
     return result
 	
-
-def read_book(search_key):
-    if search_key == "":
-        cursor = db.bookdata.find()
-    else:
-        cursor = db.bookdata.find({"$or" : [
-            {"title" : {"$regex": search_key, '$options': 'i'}},
-            {"author" : {"$regex": search_key, '$options': 'i'}}
-        ] })
-    # transform pymongo cursor to string
-    return dumps(cursor)
-
-def insert_book(newBook):
-    col = db.bookdata
-    col.insert_one(
-        {
-            "_id": uuid.uuid4().hex,
-            "title": newBook.get('title'),
-            "author": newBook.get('author'),
-            "read": newBook.get('read')
-        }
-    )
-
-def remove_book(book_id):
-    col = db.bookdata
-    col.delete_one({"_id": book_id})
-	
 @app.route('/books', methods=['GET', 'POST'])
 def all_books():
     response_object = {'status': 'success'}
@@ -134,6 +107,43 @@ def search_book():
         search_key = request.args.get('search_key')
         response_object = json.loads(read_book(search_key))
     return json.dumps(response_object)
+
+@app.route('/latest_books', methods=['GET'])
+def latest_books():
+    response_object = {'status': 'success'}
+    if request.method == 'GET':
+        response_object = json.loads(get_latest_books())
+    return json.dumps(response_object)
+
+def read_book(search_key):
+    if search_key == "":
+        cursor = db.bookdata.find()
+    else:
+        cursor = db.bookdata.find({"$or" : [
+            {"title" : {"$regex": search_key, '$options': 'i'}},
+            {"author" : {"$regex": search_key, '$options': 'i'}}
+        ] })
+    # transform pymongo cursor to string
+    return dumps(cursor)
+
+def insert_book(newBook):
+    col = db.bookdata
+    col.insert_one(
+        {
+            "_id": uuid.uuid4().hex,
+            "title": newBook.get('title'),
+            "author": newBook.get('author'),
+            "read": newBook.get('read')
+        }
+    )
+
+def remove_book(book_id):
+    col = db.bookdata
+    col.delete_one({"_id": book_id})
+
+def get_latest_books():
+    cursor = mongo.db.bookdata.find().sort([('$natural', -1)]).limit(4)
+    return dumps(cursor)
 
 if __name__ == '__main__':
 	app.run()

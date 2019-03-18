@@ -1,13 +1,18 @@
 <template>
     <div class="row">
         <div class="">
-            <form @submit.prevent="getBooks()">
-                <input v-model="search_key" type="text" placeholder="Search for book"/>
-                <v-btn type="submit">Search</v-btn>
-            </form>        
+            
+            <v-text-field
+              @keyup.enter="getBooks()"
+              box
+              label="Search for the books"
+              append-icon="search"
+            >
+            </v-text-field>
+          
         </div>
         <div>
-          <h3 v-if="any_response" class="text-center">
+          <h3 v-if="any_response" class="">
             No search results!
           </h3>
         </div>

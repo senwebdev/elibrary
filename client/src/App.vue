@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark color="backcolor">
     <navbar></navbar>
     <router-view />
   </v-app>
@@ -7,7 +7,6 @@
 
 <script>
 import NavBar from './components/NavBar'
-
 
 export default {
   name: 'App',
@@ -21,3 +20,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
