@@ -141,9 +141,10 @@ def remove_book(book_id):
     col = db.bookdata
     col.delete_one({"_id": book_id})
 
-def get_latest_books():
+def get_latest_books(): 
     cursor = mongo.db.bookdata.find().sort([('$natural', -1)]).limit(4)
     return dumps(cursor)
 
 if __name__ == '__main__':
 	app.run()
+ 
