@@ -19,9 +19,9 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-container>
+  </v-container> 
 </template>
-
+ 
 <script>
 import axios from 'axios';
 import EventBus from './EventBus'
