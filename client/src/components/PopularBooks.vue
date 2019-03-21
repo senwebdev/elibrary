@@ -2,7 +2,7 @@
 
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
-      <v-btn class="white--text" id="watch-btn" color="green accent-4">Latest Books</v-btn>
+      <v-btn class="white--text" id="watch-btn" color="green accent-4">Popular Books</v-btn>
     </v-layout>
     <v-layout row wrap>
       <v-flex v-for="(book, index) in books" :key="index" xs3>
@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     getLatestBooks() { 
-      const path = 'http://localhost:5000/latest_books';
+      const path = 'http://localhost:5000/popular_books';
       axios.get(path)
       .then((res) => {
         this.books = res.data;
@@ -74,7 +74,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 .image:hover {
  opacity: 0.5;

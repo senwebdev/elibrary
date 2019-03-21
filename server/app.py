@@ -115,6 +115,13 @@ def latest_books():
         response_object = json.loads(get_latest_books())
     return json.dumps(response_object)
 
+@app.route('/popular_books', methods=['GET'])
+def popular_books():
+    response_object = {'status': 'success'}
+    if request.method == 'GET':
+        response_object = json.loads(get_popular_books())
+    return json.dumps(response_object)
+
 def read_book(search_key):
     if search_key == "":
         cursor = db.bookdata.find()
@@ -143,6 +150,10 @@ def remove_book(book_id):
 
 def get_latest_books(): 
     cursor = mongo.db.bookdata.find().sort([('$natural', -1)]).limit(4)
+    return dumps(cursor)
+
+def get_popular_books(): 
+    cursor = mongo.db.bookdata.find().sort("likes", -1).limit(4)
     return dumps(cursor)
 
 if __name__ == '__main__':
