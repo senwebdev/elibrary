@@ -6,6 +6,7 @@ import Dashboard from '@/components/Dashboard'
 import Books from '@/components/Books';
 import Profile from '../components/Profile';
 import Searchfield from "../components/Searchfield";
+import AboutBook from "../components/AboutBook";
 
 Vue.use(Router);
 
@@ -13,12 +14,18 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: { 
+      guest: true
+    }
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register
+    component: Register,
+    meta: { 
+      guest: true
+    }
   },
   {
     path: '/',
@@ -26,14 +33,25 @@ const routes = [
     component: Dashboard,
   },
   {
+    path: '/aboutbook',
+    name: 'AboutBook',
+    component: AboutBook
+  },
+  {
     path: '/books',
     name: 'Books',
     component: Books,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: "/profile",
     name: "profile",
-    component: Profile
+    component: Profile,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: "/search",
@@ -46,5 +64,28 @@ const router = new Router({
   mode: 'history',
   routes
 });
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+      if (localStorage.getItem('usertoken') == null) {
+          next({
+              path: '/login',
+              params: { nextUrl: to.fullPath }
+          })
+      }
+      else{
+        next()
+      }
+  } else if(to.matched.some(record => record.meta.guest)) {
+      if(localStorage.getItem('usertoken') == null){
+          next()
+      }
+      else{
+          next()
+      }
+  }else {
+      next() 
+  }
+})
 
 export default router;

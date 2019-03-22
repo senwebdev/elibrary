@@ -1,6 +1,6 @@
 <template>
-    <div class="row">
-        <div class="">
+    <v-layout class="row">
+        <v-card >
             
             <v-text-field
               @keyup.enter="getBooks()"
@@ -10,13 +10,13 @@
             >
             </v-text-field>
           
-        </div>
-        <div>
+        </v-card>
+        <v-label>
           <h3 v-if="any_response" class="">
             No search results!
           </h3>
-        </div>
-    </div>
+        </v-label>
+    </v-layout>
 </template>
 
 <script>

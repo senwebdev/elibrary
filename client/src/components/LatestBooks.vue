@@ -5,16 +5,16 @@
       <v-btn class="white--text" id="watch-btn" color="green accent-4">Latest Books</v-btn>
     </v-layout>
     <v-layout row wrap>
-      <v-flex v-for="(book, index) in books" :key="index" xs3>
+      <v-flex v-for="(book, index) in books" :key="index" sm>
         <v-card dark color="primary" oncontextmenu="return false" @mouseleave="leaveFlex(index, $event)" >
           <v-img class="image" :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
           <!-- <transition name="fade" > -->
-            <div class="summary" v-if="isHovers[index]" >
-              {{book.title}}<br>
-              {{book.author}}<br>
-              {{book.read}}<br>
-              <v-btn v-bind:disabled="isAuthorized()">Watch Now</v-btn>
-            </div>
+            <v-flex class="summary" v-if="isHovers[index]" >
+              <v-card>  Title : {{book.title}} </v-card>
+              <v-card> Author : {{book.author}} </v-card>
+              <v-card> Available : {{book.available}} </v-card>
+              <v-btn v-bind:disabled="isAuthorized()" color="green accent-4"><router-link to="/aboutbook">GO</router-link></v-btn>
+            </v-flex>
           <!-- </transition> -->
         </v-card>
       </v-flex>

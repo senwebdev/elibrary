@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="profile">
     <div class="jumbotron mt-5">
       <div class="col-sm-8 mx-auto">
         <h1 class="text-center">PROFILE</h1>
@@ -39,3 +39,9 @@ export default {
   }
 }
 </script>
+
+<style>
+#profile table, h1{
+  color:lightsalmon
+}
+</style>

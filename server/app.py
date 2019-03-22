@@ -46,12 +46,12 @@ def register():
     new_user = users.find_one({'_id' : user_id})
 
     result = {'email' : new_user['email'] + ' registered'}
-    print(result)
     return jsonify({'result' : result})
 	
 
 @app.route('/users/login', methods=['POST'])
 def login():
+
     users = mongo.db.users
     email = request.get_json()['email']
     password = request.get_json()['password']
@@ -68,9 +68,10 @@ def login():
 				)
             result = access_token
         else:
-            result = jsonify({"error":"Invalid username and password"})            
+            result = jsonify({"error":"Invalid username and password"})
     else:
         result = jsonify({"result":"No results found"})
+    
     return result
 	
 @app.route('/books', methods=['GET', 'POST'])
@@ -140,7 +141,7 @@ def insert_book(newBook):
             "_id": uuid.uuid4().hex,
             "title": newBook.get('title'),
             "author": newBook.get('author'),
-            "read": newBook.get('read')
+            "available": newBook.get('available')
         }
     )
 
@@ -149,11 +150,11 @@ def remove_book(book_id):
     col.delete_one({"_id": book_id})
 
 def get_latest_books(): 
-    cursor = mongo.db.bookdata.find().sort([('$natural', -1)]).limit(4)
+    cursor = mongo.db.bookdata.find().sort([('$natural', -1)]).limit(8)
     return dumps(cursor)
 
 def get_popular_books(): 
-    cursor = mongo.db.bookdata.find().sort("likes", -1).limit(4)
+    cursor = mongo.db.bookdata.find().sort("likes", -1).limit(8)
     return dumps(cursor)
 
 if __name__ == '__main__':

@@ -1,37 +1,48 @@
 <template>
     <div id="nav_bar">
-        <v-toolbar dark color="secondary">
-          <v-toolbar-side-icon></v-toolbar-side-icon>
-          <v-toolbar-title class="white--text">eLibrary</v-toolbar-title>
-          <v-spacer></v-spacer>
-            <router-link to="/">
-              <v-btn round icon>
-                <v-icon>home</v-icon>
-              </v-btn>
-            </router-link>
-            <router-link v-if="auth=='loggedin'" to="/books">
-              <v-btn round icon>
-                <v-icon>library_books</v-icon>
-              </v-btn>
-            </router-link>
-            <router-link v-if="auth=='loggedin'" to="/profile">
-              <v-btn round icon>
-                <v-icon>account_box</v-icon>
-              </v-btn>
-            </router-link>          
-            <router-link v-if="auth==''" to="/login">
-              <v-btn round icon>
-                <v-icon>account_circle</v-icon>
-              </v-btn>
-            </router-link>
-            
-            <a v-if="auth=='loggedin'" href="/" v-on:click="logout">
-              <v-btn round icon>
-                <v-icon>exit_to_app</v-icon>
-              </v-btn>
-            </a>            
-            
-          </v-toolbar>
+      <!-- User Not Authorized -->
+      <v-toolbar v-if="auth==''" dark color="secondary" class="toolbar">
+        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-toolbar-title class="white--text">eLibrary</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <router-link to="/">
+          <v-btn round icon>
+            <v-icon>home</v-icon>
+          </v-btn>
+        </router-link>
+        <router-link to="/login">
+          <v-btn round icon>
+            <v-icon>account_circle</v-icon>
+          </v-btn>
+        </router-link>
+      </v-toolbar>
+
+      <!-- User Authorized -->
+      <v-toolbar v-if="auth=='loggedin'" dark color="secondary">
+        <v-toolbar-side-icon></v-toolbar-side-icon>
+        <v-toolbar-title class="white--text">eLibrary</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <router-link to="/">
+          <v-btn round icon>
+            <v-icon>home</v-icon>
+          </v-btn>
+        </router-link>
+        <router-link to="/books">
+          <v-btn round icon>
+            <v-icon>library_books</v-icon>
+          </v-btn>
+        </router-link>
+        <router-link to="/profile">
+          <v-btn round icon>
+            <v-icon>account_box</v-icon>
+          </v-btn>
+        </router-link>          
+        <a href="/" v-on:click="logout">
+          <v-btn round icon>
+            <v-icon>exit_to_app</v-icon>
+          </v-btn>
+        </a>
+      </v-toolbar>          
     </div>
 </template>
 
@@ -64,3 +75,13 @@ export default {
 
 }
 </script>
+
+<style>
+#nav_bar a{
+  text-decoration: none
+}
+#nav_bar .toolbar{
+  position:fixed;
+  z-index:30;
+}
+</style>

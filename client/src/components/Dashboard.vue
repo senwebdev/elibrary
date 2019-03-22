@@ -1,6 +1,7 @@
 <template>
-    <v-layout>
+    <v-layout row wrap>
         <search class="search_form"></search>
+        <v-label v-if="authorized">Please login to read full story...</v-label>
         <latestbooks></latestbooks>
         <popularbooks></popularbooks>
     </v-layout>
@@ -12,18 +13,22 @@ import PopularBooks from './PopularBooks'
 import Search from './Searchfield' 
 
 export default {
+    data: function(){
+        return{
+            authorized:''
+        }
+    },
     components: {
         'latestbooks': LatestBooks,
         'popularbooks': PopularBooks,
-        'search': Search
+        'search': Search,
     }
 }; 
 </script>
 
 <style>
 .search_form{
-    position: fixed;
-    left: 75%;
-    width: 360px;
+    margin-left:75%;
+    height:96px;
 } 
 </style>
