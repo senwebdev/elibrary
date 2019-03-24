@@ -5,7 +5,7 @@ import Register from '@/components/Register'
 import Dashboard from '@/components/Dashboard'
 import Books from '@/components/Books';
 import Profile from '../components/Profile';
-import Searchfield from "../components/Searchfield";
+import SearchResults from "../components/SearchResults";
 import AboutBook from "../components/AboutBook";
 
 Vue.use(Router);
@@ -56,7 +56,7 @@ const routes = [
   {
     path: "/search",
     name: "search",
-    component: Searchfield
+    component: SearchResults
   }
 ];
 

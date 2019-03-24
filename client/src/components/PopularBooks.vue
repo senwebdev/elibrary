@@ -1,5 +1,4 @@
 <template>
-
   <v-container grid-list-md text-xs-center>
     <v-layout row wrap>
       <v-btn class="white--text" id="watch-btn" color="green accent-4">Popular Books</v-btn>
@@ -10,9 +9,9 @@
           <v-img class="image" :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
           <!-- <transition name="fade" > -->
             <v-flex class="summary" v-if="isHovers[index]" >
-              <v-card> Title : {{book.title}} </v-card>
-              <v-card> Author : {{book.author}} </v-card>
-              <v-card> Available : {{book.available}} </v-card>
+              <v-card-text> Title : {{book.title}} </v-card-text>
+              <v-card-text> Author : {{book.author}} </v-card-text>
+              <v-card-text> Available : {{book.available}} </v-card-text>
               <v-btn v-bind:disabled="isAuthorized()" color="green accent-4"><router-link to="/aboutbook">GO</router-link></v-btn>
             </v-flex>
           <!-- </transition> -->
@@ -36,7 +35,7 @@ export default {
   },
   methods: {
     getLatestBooks() { 
-      const path = 'http://localhost:5000/popular_books';
+      const path = `http://localhost:5000/popular_books`;
       axios.get(path)
       .then((res) => {
         this.books = res.data;

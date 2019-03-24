@@ -1,9 +1,9 @@
 <template>
     <v-layout row wrap>
-        <search class="search_form"></search>
-        <v-label v-if="isAuthorized()">Please login to read full story...</v-label>
-        <latestbooks></latestbooks>
-        <popularbooks></popularbooks>
+    <search class="search_form"></search>
+    <v-label v-if="isAuthorized()">Please login to read full story...</v-label>
+    <latestbooks></latestbooks>
+    <popularbooks></popularbooks>
     </v-layout>
 </template>
 
@@ -30,6 +30,7 @@ export default {
 <style>
 .search_form{
     margin-left:75%;
+    margin-top:3%;
     height:96px;
 } 
 </style>

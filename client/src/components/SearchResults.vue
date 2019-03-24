@@ -1,11 +1,12 @@
 <template>
-
   <v-container grid-list-md text-xs-center>
+      <br/>
     <v-layout row wrap>
-      <v-btn class="white--text" id="watch-btn" color="green accent-4">Latest Books</v-btn>
+      <v-btn v-if="any_response" class="white--text" id="watch-btn" color="green accent-4">Search Results</v-btn>
+      <v-btn v-else class="white--text" id="watch-btn" color="green accent-4">No Results</v-btn>
     </v-layout>
     <v-layout row wrap>
-      <v-flex v-for="(book, index) in books" :key="index" sm>
+      <v-flex class="card" v-for="(book, index) in books" :key="index" xs1>
         <v-card dark color="primary" oncontextmenu="return false" @mouseleave="leaveFlex(index, $event)" >
           <v-img class="image" :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
           <!-- <transition name="fade" > -->
@@ -32,17 +33,18 @@ export default {
       books: [],
       isHovers: [],
       auth: '',
+      search_key:'',
+      any_response: false
     }
   },
   methods: {
-    getLatestBooks() { 
-      const path = 'http://localhost:5000/latest_books';
+    getBooks(){
+      const path = `http://localhost:5000/search?search_key=${this.$route.query.search_key}`;
       axios.get(path)
       .then((res) => {
-        this.books = res.data;
-        for (let i = 0; i < this.books.length; i++) {
-          this.isHovers[i] = false;
-        }
+        this.any_response = (res.data.length > 0) ? true : false
+        console.log(this.any_response, "search results")
+        this.books = res.data
       })
       .catch((error) => {
         // eslint-disable-next-line
@@ -65,7 +67,7 @@ export default {
     }
   },
   created(){
-    this.getLatestBooks();
+    this.getBooks();
   },
   mounted () {
     this.auth = localStorage.loggedIn;
@@ -74,7 +76,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 .image:hover {
  opacity: 0.5;
