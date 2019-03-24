@@ -6,7 +6,7 @@
       <v-btn v-else class="white--text" id="watch-btn" color="green accent-4">No Results</v-btn>
     </v-layout>
     <v-layout row wrap>
-      <v-flex class="card" v-for="(book, index) in books" :key="index" xs1>
+      <v-flex class="card" v-for="(book, index) in books" :key="index" xs2>
         <v-card dark color="primary" oncontextmenu="return false" @mouseleave="leaveFlex(index, $event)" >
           <v-img class="image" :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
           <!-- <transition name="fade" > -->
@@ -96,6 +96,9 @@ export default {
   background: white;
   opacity: 0.9;
   border-top-left-radius:10px;
+}
+.summary a{
+    text-decoration: none
 }
 
 #watch-btn, #watch-btn:disabled{
