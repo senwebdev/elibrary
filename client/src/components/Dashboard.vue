@@ -1,7 +1,7 @@
 <template>
     <v-layout row wrap>
         <search class="search_form"></search>
-        <v-label v-if="authorized">Please login to read full story...</v-label>
+        <v-label v-if="isAuthorized()">Please login to read full story...</v-label>
         <latestbooks></latestbooks>
         <popularbooks></popularbooks>
     </v-layout>
@@ -13,9 +13,10 @@ import PopularBooks from './PopularBooks'
 import Search from './Searchfield' 
 
 export default {
-    data: function(){
-        return{
-            authorized:''
+    methods:{
+        isAuthorized: function(){
+        var isLoggedin = localStorage.getItem('usertoken')
+        return isLoggedin ? false : true;
         }
     },
     components: {
