@@ -35,7 +35,10 @@ const routes = [
   {
     path: '/aboutbook',
     name: 'AboutBook',
-    component: AboutBook
+    component: AboutBook,
+    meta: { 
+      requiresAuth: true
+    }
   },
   {
     path: '/books',

@@ -128,6 +128,7 @@ def read_book(search_key):
         cursor = db.bookdata.find()
     else:
         cursor = db.bookdata.find({"$or" : [
+            {"_id" : {"$regex": search_key, '$options': 'i'}},
             {"title" : {"$regex": search_key, '$options': 'i'}},
             {"author" : {"$regex": search_key, '$options': 'i'}}
         ] })

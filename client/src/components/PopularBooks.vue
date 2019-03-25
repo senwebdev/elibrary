@@ -12,7 +12,7 @@
               <v-card-text> Title : {{book.title}} </v-card-text>
               <v-card-text> Author : {{book.author}} </v-card-text>
               <v-card-text> Available : {{book.available}} </v-card-text>
-              <v-btn v-bind:disabled="isAuthorized()" color="green accent-4"><router-link to="/aboutbook">GO</router-link></v-btn>
+              <v-btn v-bind:disabled="isAuthorized()" color="green accent-4" v-on:click="aboutBooks(book._id)">GO</v-btn>
             </v-flex>
           <!-- </transition> -->
         </v-card>
@@ -24,6 +24,7 @@
 <script>
 import axios from 'axios';
 import EventBus from './EventBus'
+import Router from '../router'
 
 export default {
   data () {
@@ -61,6 +62,9 @@ export default {
     isAuthorized: function(){
       var isLoggedin = localStorage.getItem('usertoken')
       return isLoggedin ? false : true;
+    },
+    aboutBooks: function(bookid){
+      Router.push({ path: 'aboutbook', query: {book_id: bookid}})
     }
   },
   created(){

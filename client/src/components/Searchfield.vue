@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     getBooks() {
-      Router.push({ name: 'search', query: {search_key: this.search_key}})
+      Router.push({ path: 'search', query: {search_key: this.search_key}})
     },
   }
 }
