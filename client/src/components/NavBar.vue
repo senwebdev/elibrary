@@ -2,7 +2,7 @@
     <div id="nav_bar">
       <!-- User Not Authorized -->
       <v-toolbar v-if="auth==''" dark color="secondary" class="toolbar">
-        <v-toolbar-side-icon></v-toolbar-side-icon>
+        
         <v-toolbar-title class="white--text">eLibrary</v-toolbar-title>
         <v-spacer></v-spacer>
         <router-link to="/">
@@ -19,7 +19,6 @@
 
       <!-- User Authorized -->
       <v-toolbar v-if="auth=='loggedin'" dark color="secondary">
-        <v-toolbar-side-icon></v-toolbar-side-icon>
         <v-toolbar-title class="white--text">eLibrary</v-toolbar-title>
         <v-spacer></v-spacer>
         <router-link to="/">
@@ -42,12 +41,11 @@
             <v-icon>exit_to_app</v-icon>
           </v-btn>
         </a>
-      </v-toolbar>          
+      </v-toolbar>
     </div>
 </template>
 
 <script>
-
 import EventBus from './EventBus'
 
 EventBus.$on('logged-in', test => {
@@ -61,12 +59,15 @@ export default {
     }
   },
 
+  components: {
+  },
+
   methods: {
     logout () {
       localStorage.removeItem('usertoken')
     }
-
   },
+
   mounted () {
     EventBus.$on('logged-in', status => {
       this.auth = status

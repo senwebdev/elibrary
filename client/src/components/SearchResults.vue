@@ -31,7 +31,6 @@
 import axios from 'axios';
 import EventBus from './EventBus'
 import Router from '../router'
-import SideBar from '@/components/SideBar';
 import FooterBar from '@/components/FooterBar';
 import search from './Searchfield';
 
@@ -46,7 +45,6 @@ export default {
     }
   },
   components:{
-    SideBar,
     search,
     FooterBar,
   },

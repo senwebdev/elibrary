@@ -75,10 +75,6 @@
         </b-container>
       </div>
 
-      <div class="">
-        <side-bar />
-      </div>
-
       <v-divider></v-divider>
       <footer-bar />
     </div>
@@ -88,7 +84,6 @@
 <script>
 import axios from 'axios';
 import EventBus from './EventBus'
-import SideBar from '@/components/SideBar';
 import FooterBar from '@/components/FooterBar';
 
 export default {
@@ -112,7 +107,6 @@ export default {
     }
   },
   components:{
-    SideBar,
     FooterBar,
   },
   created(){

@@ -125,9 +125,9 @@ def popular_books():
 
 def read_book(search_key):
     if search_key == "":
-        cursor = db.bookdata.find()
+        cursor = db.bookdata1.find()
     else:
-        cursor = db.bookdata.find({"$or" : [
+        cursor = db.bookdata1.find({"$or" : [
             {"_id" : {"$regex": search_key, '$options': 'i'}},
             {"title" : {"$regex": search_key, '$options': 'i'}},
             {"author" : {"$regex": search_key, '$options': 'i'}}
@@ -136,7 +136,7 @@ def read_book(search_key):
     return dumps(cursor)
 
 def insert_book(newBook):
-    col = db.bookdata
+    col = db.bookdata1
     col.insert_one(
         {
             "_id": uuid.uuid4().hex,
@@ -147,15 +147,15 @@ def insert_book(newBook):
     )
 
 def remove_book(book_id):
-    col = db.bookdata
+    col = db.bookdata1
     col.delete_one({"_id": book_id})
 
 def get_latest_books(): 
-    cursor = mongo.db.bookdata.find().sort([('$natural', -1)]).limit(8)
+    cursor = mongo.db.bookdata1.find().sort([('$natural', -1)]).limit(8)
     return dumps(cursor)
 
 def get_popular_books(): 
-    cursor = mongo.db.bookdata.find().sort("likes", -1).limit(8)
+    cursor = mongo.db.bookdata1.find().sort("likes", -1).limit(8)
     return dumps(cursor)
 
 if __name__ == '__main__':
