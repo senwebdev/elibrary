@@ -11,6 +11,11 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-brands-svg-icons": "^5.8.1",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
     "auth0-js": "^9.10.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",

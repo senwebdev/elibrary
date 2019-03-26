@@ -1,6 +1,7 @@
 <template>
-  <v-container grid-list-md text-xs-center>
-      <br/>
+  <v-container grid-list-md>
+    <br/>
+    <search class="search_form"></search>
     <v-layout row wrap>
       <v-btn v-if="any_response" class="white--text" id="watch-btn" color="green accent-4">Search Results</v-btn>
       <v-btn v-else class="white--text" id="watch-btn" color="green accent-4">No Results</v-btn>
@@ -20,6 +21,9 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <v-divider></v-divider>
+    <footer-bar />
+
   </v-container> 
 </template>
  
@@ -27,6 +31,10 @@
 import axios from 'axios';
 import EventBus from './EventBus'
 import Router from '../router'
+import SideBar from '@/components/SideBar';
+import FooterBar from '@/components/FooterBar';
+import search from './Searchfield';
+
 export default {
   data () {
     return{
@@ -36,6 +44,11 @@ export default {
       search_key:'',
       any_response: false
     }
+  },
+  components:{
+    SideBar,
+    search,
+    FooterBar,
   },
   methods: {
     getBooks(){
@@ -66,7 +79,7 @@ export default {
       return isLoggedin ? false : true;
     },
     aboutBooks(bookid){
-      Router.push({ path: 'aboutbook', query: {book_id: bookid}})
+      Router.replace({ path: 'aboutbook', query: {book_id: bookid}})
     }
   },
   created(){
@@ -74,6 +87,11 @@ export default {
   },
   mounted () {
     this.auth = localStorage.loggedIn;
+  },
+  watch:{
+    '$route' (to, from){
+      this.$router.go(0);
+    }
   }
 }
 
@@ -88,7 +106,11 @@ export default {
 .row{
   padding:20px;
 }
-
+.search_form{
+    margin-left:75%;
+    margin-top:3%;
+    height:96px;
+} 
 .summary{
   width:300px;
   z-index: 10;

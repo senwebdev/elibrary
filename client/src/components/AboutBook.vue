@@ -68,7 +68,7 @@
             <v-flex>
               <v-label >Note</v-label>
               <v-card v-for="(note, index) in book.notes" :key="index">
-                <v-text>{{note.user}} : "{{note.note}}"</v-text>
+                <v-label>{{note.user}} : "{{note.note}}"</v-label>
               </v-card>
             </v-flex>
           </b-row>
