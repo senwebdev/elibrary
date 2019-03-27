@@ -135,7 +135,7 @@ def read_book(search_key):
     # transform pymongo cursor to string
     return dumps(cursor)
 
-def insert_book(newBook):
+def insert_book(newBook): 
     col = db.bookdata1
     col.insert_one(
         {
