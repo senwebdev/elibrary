@@ -81,7 +81,7 @@ export default {
           this.confirmation = 'invalid'
         } else{
           localStorage.setItem('usertoken', res.data)
-          router.push(this.$route.query.redirect || '/')
+          router.push('/')
         }
       }).catch((err) => {
         console.log(err)

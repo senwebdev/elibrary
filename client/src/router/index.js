@@ -68,27 +68,27 @@ const router = new Router({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  if(to.matched.some(record => record.meta.requiresAuth)) {
-      if (localStorage.getItem('usertoken') == null) {
-          next({
-              path: '/login',
-              params: { nextUrl: to.fullPath }
-          })
-      }
-      else{
-        next()
-      }
-  } else if(to.matched.some(record => record.meta.guest)) {
-      if(localStorage.getItem('usertoken') == null){
-          next()
-      }
-      else{
-          next()
-      }
-  }else {
-      next() 
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if(to.matched.some(record => record.meta.requiresAuth)) {
+//       if (localStorage.getItem('usertoken') == null) {
+//         next({
+//             path: '/login',
+//             params: { nextUrl: to.fullPath }
+//         })
+//       }
+//       else{
+//         next()
+//       }
+//   } else if(to.matched.some(record => record.meta.guest)) {
+//       if(localStorage.getItem('usertoken') == null){
+//           next()
+//       }
+//       else{
+//           next()
+//       }
+//   }else {
+//       next() 
+//   }
+//})
 
 export default router;

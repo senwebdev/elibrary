@@ -1,4 +1,6 @@
 <template>
+<v-layout row wrap>
+  <navbar></navbar>
   <div class="container" id="profile">
     <div class="jumbotron mt-5">
       <div class="col-sm-8 mx-auto">
@@ -22,10 +24,12 @@
       </table>
     </div>
   </div>
+</v-layout>
 </template>
 
 <script>
 import jwtDecode from 'jwt-decode'
+import NavBar from './NavBar'
 
 export default {
   data () {
@@ -36,6 +40,9 @@ export default {
       last_name: decoded.identity.last_name,
       email: decoded.identity.email
     }
+  },
+  components:{
+    'navbar': NavBar
   }
 }
 </script>

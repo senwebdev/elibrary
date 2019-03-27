@@ -1,5 +1,7 @@
 
 <template>
+<v-layout row wrap>
+  <navbar></navbar>
   <div class="container" id="books">
     <div class="row">
       <div class="col-sm-10">
@@ -115,12 +117,15 @@
     </b-form>
     </b-modal>
   </div>
+</v-layout>
+
 </template>
 
 <script>
 /* eslint-disable */
 import axios from 'axios';
 import Alert from './Alert';
+import NavBar from './NavBar'
 
 export default {
   data() {
@@ -143,6 +148,7 @@ export default {
   },
   components: {
     alert: Alert,
+    'navbar': NavBar
   },
   methods: {
     getBooks() {

@@ -1,4 +1,6 @@
 <template>
+<v-layout row wrap>
+  <navbar></navbar>
   <v-container grid-list-md>
     <br/>
     <search class="search_form"></search>
@@ -25,6 +27,7 @@
     <footer-bar />
 
   </v-container> 
+</v-layout>
 </template>
  
 <script>
@@ -33,6 +36,7 @@ import EventBus from './EventBus'
 import Router from '../router'
 import FooterBar from '@/components/FooterBar';
 import search from './Searchfield';
+import NavBar from './NavBar'
 
 export default {
   data () {
@@ -47,6 +51,7 @@ export default {
   components:{
     search,
     FooterBar,
+    'navbar': NavBar
   },
   methods: {
     getBooks(){

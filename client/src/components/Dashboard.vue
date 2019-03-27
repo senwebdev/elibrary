@@ -1,5 +1,6 @@
 <template>
     <v-layout row wrap>
+        <navbar></navbar>
         <search class="search_form"></search>
         <v-label v-if="isAuthorized()">Please login to read full story...</v-label>
         <latestbooks></latestbooks>
@@ -11,11 +12,13 @@
 import LatestBooks from './LatestBooks'
 import PopularBooks from './PopularBooks'
 import Search from './Searchfield' 
+import Router from '../router'
+import NavBar from './NavBar'
 
 export default {
     methods:{
         isAuthorized: function(){
-        var isLoggedin = localStorage.getItem('usertoken')
+        var isLoggedin = window.localStorage.getItem('usertoken')
         return isLoggedin ? false : true;
         }
     },
@@ -23,8 +26,9 @@ export default {
         'latestbooks': LatestBooks,
         'popularbooks': PopularBooks,
         'search': Search,
+        'navbar': NavBar
     }
-}; 
+}
 </script>
 
 <style>

@@ -1,4 +1,7 @@
 <template>
+<v-layout row wrap>
+  <navbar></navbar>
+
   <div class="container section">
     <br/><br/>
     <v-subheader>What is this book about?</v-subheader>
@@ -79,12 +82,14 @@
       <footer-bar />
     </div>
   </div>
+</v-layout>
 </template>
 
 <script>
 import axios from 'axios';
 import EventBus from './EventBus'
 import FooterBar from '@/components/FooterBar';
+import NavBar from './NavBar'
 
 export default {
   data: function(){
@@ -108,9 +113,16 @@ export default {
   },
   components:{
     FooterBar,
+    navbar: NavBar
   },
   created(){
     this.getbook();
   },
 }
 </script>
+
+<style>
+#navbar{
+  margin-top:0px;
+}
+</style>
