@@ -8,13 +8,16 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build",
+    "postinstall": "npm install express"
   },
   "dependencies": {
     "auth0-js": "^9.10.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
     "bootstrap-vue": "^2.0.0-rc.11",
+    "http-server": "^0.11.1",
     "jwt-decode": "^2.2.0",
     "mdbvue": "^5.1.1",
     "node-sass": "^4.11.0",
