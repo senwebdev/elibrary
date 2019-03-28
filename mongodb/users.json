@@ -1,0 +1,16 @@
+{ 
+    "_id" : ObjectId("5c8be1a7b4e29b10ff4a3aa5"), 
+    "first_name" : "admin", 
+    "last_name" : "user", 
+    "email" : "admin@admin.com", 
+    "password" : "$2b$12$XCuHkHVXoRNzfh9ufXt9I.IrFaZDngZI.8OfHTb6sndPkjGxecKMq", 
+    "created" : ISODate("2019-03-15T17:32:23.585+0000")
+}
+{ 
+    "_id" : ObjectId("5c93a06fb4e29b14e08f30d1"), 
+    "first_name" : "senior", 
+    "last_name" : "webdev", 
+    "email" : "sen.webdev@hotmail.com", 
+    "password" : "$2b$12$UdQnePqdJeb5vNQP4ClEb.6evAjQOdnuZJLKfaazSwnvnksGG2KcK", 
+    "created" : ISODate("2019-03-21T14:32:15.636+0000")
+}

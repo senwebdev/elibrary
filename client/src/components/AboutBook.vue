@@ -99,7 +99,7 @@ export default {
   },
   methods:{
     getbook() {
-      const path = `http://localhost:5000/search?search_key=${this.$route.query.book_id}`;
+      const path = `https://elibraryserver.herokuapp.com/search?search_key=${this.$route.query.book_id}`;
       axios.get(path)
       .then((res) => {
         this.book = res.data[0];

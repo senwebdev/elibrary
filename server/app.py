@@ -10,13 +10,14 @@ from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import (create_access_token, create_refresh_token, jwt_required, jwt_refresh_token_required, get_jwt_identity, get_raw_jwt)
+import os
 
 DEBUT=True
 
 app=Flask(__name__)
 app.config.from_object(__name__)
 app.config['MONGO_DBNAME'] = 'blog'
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/blog'
+app.config['MONGO_URI'] = 'mongodb+srv://elibrary-cluser-saipe.mongodb.net'
 app.config['JWT_SECRET_KEY'] = 'secret'
 
 CORS(app)
@@ -24,8 +25,13 @@ CORS(app)
 mongo = PyMongo(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
-client = MongoClient('localhost:27017')
+#connect db with mongo atlas cluster
+client = MongoClient('mongodb+srv://weloper:dhwlstjd0103@elibrary-cluser-saipe.mongodb.net/admin')
 db = client.blog
+
+@app.route('/', methods=['GET'])
+def welcome():
+    return 'WELCOME'
 
 @app.route('/users/register', methods=['POST'])
 def register():
@@ -159,5 +165,6 @@ def get_popular_books():
     return dumps(cursor)
 
 if __name__ == '__main__':
-	app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
  

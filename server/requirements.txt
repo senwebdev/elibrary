@@ -1,6 +1,7 @@
 bcrypt==3.1.6
 cffi==1.12.2
 Click==7.0
+dnspython==1.16.0
 Flask==1.0.2
 Flask-Bcrypt==0.7.1
 Flask-Cors==3.0.4
@@ -10,6 +11,7 @@ gunicorn==19.9.0
 itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
+pml==1.20
 pycparser==2.19
 PyJWT==1.7.1
 pymongo==3.7.2

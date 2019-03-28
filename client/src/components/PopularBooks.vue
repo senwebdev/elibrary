@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     getLatestBooks() { 
-      const path = `http://localhost:5000/popular_books`;
+      const path = `https://elibraryserver.herokuapp.com/popular_books`;
       axios.get(path)
       .then((res) => {
         this.books = res.data;

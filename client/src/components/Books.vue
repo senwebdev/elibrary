@@ -152,7 +152,7 @@ export default {
   },
   methods: {
     getBooks() {
-      const path = 'http://localhost:5000/books';
+      const path = 'https://elibraryserver.herokuapp.com/books';
       axios.get(path)
       .then((res) => {
         this.books = res.data.books;
@@ -163,7 +163,7 @@ export default {
       });
     },
     addBook(payload) {
-      const path = 'http://localhost:5000/books';
+      const path = 'https://elibraryserver.herokuapp.com/books';
       axios.post(path, payload)
         .then(() => {
           this.getBooks();
@@ -180,7 +180,7 @@ export default {
       this.editForm = book;
     },
     updateBook(payload, bookID) {
-    const path = `http://localhost:5000/books/${bookID}`;
+    const path = `https://elibraryserver.herokuapp.com/books/${bookID}`;
     axios.put(path, payload)
       .then(() => {
         this.getBooks();
@@ -194,7 +194,7 @@ export default {
       });
     },
     removeBook(bookID) {
-    const path = `http://localhost:5000/books/${bookID}`;
+    const path = `https://elibraryserver.herokuapp.com/books/${bookID}`;
     axios.delete(path)
         .then(() => {
           this.getBooks();

@@ -91,7 +91,7 @@ export default {
         this.passwordChck = ''
     },
     register () {
-      axios.post('http://localhost:5000/users/register',
+      axios.post('https://elibraryserver.herokuapp.com/users/register',
         {
           first_name: this.firstname,
           last_name: this.lastname,

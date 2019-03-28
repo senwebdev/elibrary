@@ -1,0 +1,194 @@
+{ 
+    "_id" : "f58eee370b874444b1398c1a705c75dc", 
+    "title" : "Node", 
+    "author" : "Ryan Dahl", 
+    "available" : true, 
+    "img" : "node.jpeg", 
+    "notes" : [
+        {
+            "user" : "54634643", 
+            "note" : "I am Noder!"
+        }, 
+        {
+            "user" : "34634634", 
+            "note" : "I am a Real Noder!"
+        }, 
+        {
+            "user" : "45325346", 
+            "note" : "I am a Real Real Noder!"
+        }, 
+        {
+            "user" : "435567556", 
+            "note" : "I am a Real Real Real Noder!"
+        }
+    ], 
+    "likes" : "3"
+}
+{ 
+    "_id" : "bc523e03382f4380b812cefcabac5c4a", 
+    "title" : "Laravel", 
+    "author" : "Taylor Otwell", 
+    "available" : true, 
+    "notes" : [
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer's Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer's Killer's Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer's Killer's Killer's Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer's Killer's Killer's Killer's Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer's Killer's Killer's Killer's Killer's Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Laravel Killer's Killer's Killer's Killer's Killer's Killer's Killer!"
+        }
+    ], 
+    "img" : "laravel.jpeg", 
+    "likes" : "3"
+}
+{ 
+    "_id" : "2b9dc1aed9314e81af084d6435fe5a53", 
+    "title" : "Python", 
+    "author" : "Guido van Rossum", 
+    "available" : false, 
+    "notes" : [
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Python Killer!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Python Lover!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Python Friend!"
+        }
+    ], 
+    "img" : "python.jpeg", 
+    "likes" : "4"
+}
+{ 
+    "_id" : "2ad1b9cfe06146a8b5c7670394da0eb1", 
+    "title" : "Django", 
+    "author" : "Adrian Holovaty", 
+    "available" : true, 
+    "notes" : [
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Django Maker!"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a Django Engineer!"
+        }
+    ], 
+    "img" : "django.jpeg", 
+    "likes" : "2"
+}
+{ 
+    "_id" : "b8defb3869e6459a98183b42a25ddcbc", 
+    "title" : "Upworker", 
+    "author" : "Stephane Kasriel", 
+    "available" : true, 
+    "notes" : [
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a upworker"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being the best upworker"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being the most advanced upworker"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being the most skilled upworker"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being the most shared upworker"
+        }, 
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being the most expert upworker"
+        }
+    ], 
+    "img" : "upwork.jpeg", 
+    "likes" : "5"
+}
+{ 
+    "_id" : "20039e1189284b45baebb1fbdd32a6d3", 
+    "title" : "Wordpress", 
+    "author" : "Matt Mullenweg", 
+    "available" : "true", 
+    "img" : "wordpress.jpeg", 
+    "notes" : [
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a wordpresser"
+        }
+    ], 
+    "likes" : "0"
+}
+{ 
+    "_id" : "bc7eb3fda257409c8a9650ee16f86443", 
+    "title" : "React.JS", 
+    "author" : "Jordan Walke", 
+    "available" : "true", 
+    "img" : "react.jpeg", 
+    "notes" : [
+        {
+            "user" : "393939", 
+            "note" : "I am proud of being a upworker"
+        }
+    ], 
+    "likes" : "1"
+}
+{ 
+    "_id" : "5299fb62df4a41879dea42bf8593d375", 
+    "title" : "Angular.JS", 
+    "author" : "Adam Abrons", 
+    "available" : "true", 
+    "img" : "angular.jpeg", 
+    "notes" : [
+        {
+            "user" : "345345", 
+            "note" : "I am proud of being a Angular developer!"
+        }
+    ], 
+    "likes" : "2"
+}
+{ 
+    "_id" : "d49876c539874cee881d5a3af5530d89", 
+    "title" : "Vue.JS", 
+    "author" : "Evan You", 
+    "available" : "true", 
+    "img" : "vue.png", 
+    "notes" : [
+        {
+            "user" : "345345", 
+            "note" : "I am a big VUE fan!"
+        }
+    ], 
+    "likes" : "0"
+}

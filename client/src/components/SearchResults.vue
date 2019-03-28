@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     getBooks(){
-      const path = `http://localhost:5000/search?search_key=${this.$route.query.search_key}`;
+      const path = `https://elibraryserver.herokuapp.com/search?search_key=${this.$route.query.search_key}`;
       axios.get(path)
       .then((res) => {
         this.any_response = (res.data.length > 0) ? true : false
