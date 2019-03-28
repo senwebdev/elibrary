@@ -6,7 +6,7 @@
     <v-layout row wrap>
       <v-flex v-for="(book, index) in books" :key="index" sm>
         <v-card dark color="primary" oncontextmenu="return false" @mouseleave="leaveFlex(index, $event)" >
-          <v-img class="image" :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
+          <v-img class="image" :src="`${book.img}`" alt="published books" aspect-ratio="1" @mouseover="showSummary(index, $event)"/>
           <!-- <transition name="fade" > -->
             <v-flex class="summary" v-if="isHovers[index]" >
               <v-card-text> Title : {{book.title}} </v-card-text>

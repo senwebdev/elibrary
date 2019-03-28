@@ -17,7 +17,7 @@ DEBUT=True
 app=Flask(__name__)
 app.config.from_object(__name__)
 app.config['MONGO_DBNAME'] = 'blog'
-app.config['MONGO_URI'] = 'mongodb+srv://elibrary-cluser-saipe.mongodb.net'
+app.config['MONGO_URI'] = 'mongodb+srv://weloper:dhwlstjd0103@elibrary-cluser-saipe.mongodb.net/blog'
 app.config['JWT_SECRET_KEY'] = 'secret'
 
 CORS(app)
@@ -59,6 +59,7 @@ def register():
 def login():
 
     users = mongo.db.users
+    print(users)
     email = request.get_json()['email']
     password = request.get_json()['password']
     result = ""

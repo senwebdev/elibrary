@@ -11,7 +11,7 @@
         <b-container class="">
           <b-row align-v="center">
             <b-col >
-              <v-img :src="require(`@/assets/${book.img}`)" alt="published books" aspect-ratio="1" max-height="300px" max-width="300px"/>
+              <v-img :src="`${book.img}`" alt="published books" aspect-ratio="1" max-height="300px" max-width="300px"/>
             </b-col>
             <b-col >
               <v-flex>
