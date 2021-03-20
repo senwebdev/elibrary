@@ -9,7 +9,7 @@ Flask-JWT-Extended==3.18.0
 Flask-PyMongo==2.2.0
 gunicorn==19.9.0
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 pml==1.20
 pycparser==2.19
